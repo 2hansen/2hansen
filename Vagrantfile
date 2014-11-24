@@ -15,13 +15,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname = "dev.2hansen.dk"
   config.vm.provision :shell, path: "vagrant/bootstrap.sh"
   config.vm.network :forwarded_port, host: 1234, guest: 80
-  config.vm.synced_folder "src/", "/usr/share/nginx/html"
+  # config.vm.synced_folder "src/", "/usr/share/nginx/html"
 end
-
-
-
-
-
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
