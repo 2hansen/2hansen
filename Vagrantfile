@@ -14,7 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_url = "https://vagrantcloud.com/ubuntu/boxes/trusty64"
   config.vm.hostname = "dev.2hansen.dk"
   config.vm.provision :shell, path: "vagrant/bootstrap.sh"
-  config.vm.network :forwarded_port, host: 8888, guest: 80
+  config.vm.network :forwarded_port, host: 1234, guest: 80
   config.vm.synced_folder "src/", "/usr/share/nginx/html"
 end
 
