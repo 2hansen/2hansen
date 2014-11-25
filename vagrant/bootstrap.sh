@@ -10,12 +10,15 @@ function install_devtools {
 	echo "### Install nodejs and dev tools"
 	apt-get install -y nodejs-legacy npm git
 	cd /vagrant
-	npm install -g bower
-	npm install karma
+	npm install karma --save-dev
+	npm install karma-jasmine --save-dev
 	npm install -g karma-cli
 	npm install phantomjs
-	bower install angular
-	bower install bootstrap
+	npm install -g bower
+	su vagrant
+	bower install --allow-root angular 
+	bower install --allow-root bootstrap
+	su
 	cd
 }
 
