@@ -1,0 +1,25 @@
+{
+  "name": "vagrant",
+  "version": "0.0.0",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "latest",
+    "bootstrap": "latest",
+    "angular-route": "latest",
+    "require": "latest"
+  },
+  "devDependencies": {
+        "angular-mocks": "latest"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
