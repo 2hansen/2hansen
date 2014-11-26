@@ -11,7 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "ubuntu/trusty64"
-  config.vm.box_url = "https://vagrantcloud.com/ubuntu/boxes/trusty64"
+  config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-i386-vagrant-disk1.box"
   config.vm.hostname = "dev.2hansen.dk"
   config.vm.provision :shell, path: "vagrant/bootstrap.sh"
   config.vm.network :forwarded_port, host: 1234, guest: 80
