@@ -1,21 +1,23 @@
 #!/usr/bin/env bash
 function install_nginx {
 	echo "### Install nginx"
-	sudo apt-get install -y nginx
+	apt-get install -y nginx
 	cp /vagrant/vagrant/default /etc/nginx/sites-enabled
 	/etc/init.d/nginx restart
 }
 
-function install_devtools {
-	echo "### Install nodejs and dev tools"
+function install_npm {
+	echo "### Install nodejs and more"
 	apt-get install -y nodejs-legacy npm git
 	cd /vagrant
-	#npm install karma --save-dev
-	#npm install karma-jasmine karma-phantomjs-launcher --save-dev
-	#npm install -g karma-cli
-	#npm install phantomjs
-	#npm install require
+	npm install express
 	npm install -g bower
+	cd
+}
+
+function install_bower {
+	echo "### Install bower packages"
+	cd /vagrant/vagrant
 	bower install --allow-root
 	cd
 }
@@ -23,6 +25,7 @@ function install_devtools {
 echo "### Bootstrappin'!"
 sudo apt-get update
 install_nginx
-install_devtools
-
+install_npm
+install_bower
+sudo apt-get upgrade -y
 echo "### All done!"
