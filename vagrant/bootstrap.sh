@@ -9,7 +9,8 @@ function install_nginx {
 function install_npm {
 	echo "### Install nodejs and more"
 	apt-get install -y nodejs-legacy npm git
-	cd /vagrant
+	mkdir /vagrnt/api #Change to check if already created
+	cd /vagrant/api 
 	npm install express
 	npm install -g bower
 	cd
