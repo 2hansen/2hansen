@@ -1,0 +1,6 @@
+<div ng-repeat="employee in employees | orderBy:'name.last' ">
+    <div ng-show="employee.isActive">
+        <span>{{employee.name.first}} {{employee.name.last}}</span>
+        <span><img ng-src="{{employee.picture}}" /></span>
+    </div>
+</div>

@@ -9,8 +9,8 @@
   "dependencies": {
     "angular": "latest",
     "bootstrap": "latest",
-    "angular-route": "latest",
-    "require": "latest"
+    "d3": "latest",
+    "angular-charts": "latest"
   },
   "ignore": [
     "**/.*",
