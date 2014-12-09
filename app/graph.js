@@ -7,12 +7,10 @@
 			var count = 0;
 			var staffData = [];
 			var element;
-
-			staffService.all().success(function (data) {
-    			$scope.employees = data;
-    			//$log.log($scope.employees.length);
-    			// init further handling of `.data` here.
-	  	
+			
+	    	//$log.log($scope.employees.length);
+		  	staffService.all().success(function (data) {
+	    		$scope.employees = data;
 				for (employee in $scope.employees){
 					if($scope.employees[employee].isActive){
 						var found = false;
@@ -33,8 +31,9 @@
 					}
 					
 				}
+			});	
+			
 				//$log.log(staffData + " " + series);
-			});
 			return staffData;
 		};
 
@@ -59,18 +58,11 @@
         };
 
 		$scope.dataSets = [
-			{
-				name: "Favorite OS", 
-				data: returnSeries('favoriteOs')
-			},
-			{
-				name: "Favorite Pet", 
-				data: returnSeries('favoritePet')
-		    },
-		    {
-		    	name: 'Sex',
-		    	data: returnSeries('sex')
-		    }	
+			{ name: "Favorite OS", data: returnSeries('favoriteOs') },
+			{ name: "Favorite Pet", data: returnSeries('favoritePet') },
+		    { name: 'Sex', data: returnSeries('sex') },
+		    { name: 'Fulltime', data: returnSeries('fullTime') }, //Convert to percent
+		    { name: 'Hours', data: returnSeries('hours') } 
 	    ]
 
 		$scope.data = $scope.dataSets[0].data; //Init	

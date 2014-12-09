@@ -56,8 +56,8 @@
             <div ng-controller="graphCtrl">
               <!-- <p>Selected Series: {{selectedSeries.name}} ({{selectedSeries.value}})</p>
               <p>Type: {{chartType}}</p>
-              <p>Type: {{options.chart.type}}</p>
-              <p>Data: {{data}}</p> -->
+              <p>Type: {{options.chart.type}}</p> -->
+              <!-- <p>Data: {{employees}}</p> -->
               <nvd3 options='options' data='data'></nvd3>
               <select ng-model="data" ng-options="dataSet.data as dataSet.name for dataSet in dataSets"></select>
               <select ng-model="options.chart.type" ng-options="chartType.value as chartType.name for chartType in chartTypes"></select>
