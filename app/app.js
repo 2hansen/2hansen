@@ -1,6 +1,10 @@
 'use strict';
 
-(function(){var app = angular.module("myApp", ['angularCharts', 'staff', 'graph']);
+(function(){var app = angular.module("myApp", ['nvd3', 'staff', 'graph'])
+	/*.run(function($rootScope){
+		$rootScope.employees = [];
+	})*/
+
 
 })();
 

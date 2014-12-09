@@ -10,7 +10,11 @@
     "angular": "latest",
     "bootstrap": "latest",
     "d3": "latest",
-    "angular-charts": "latest"
+    "nvd3": "latest",
+    "angular-nvd3": "latest"
+  },
+    "resolutions": {
+    "d3": ">=3.4"
   },
   "ignore": [
     "**/.*",

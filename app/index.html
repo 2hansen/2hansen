@@ -3,6 +3,7 @@
   <head>
     <title>Hello World!</title>
      <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+     <link rel="stylesheet" href="bower_components/nvd3/nv.d3.min.css">
      <link rel="stylesheet" href="app.css">
      
     <style>
@@ -17,7 +18,7 @@
         
     </style>
   </head>
-  <body>
+  <body  ng-app="myApp">
     
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
           <div class="container">
@@ -41,22 +42,26 @@
       </nav>
       <div class="container">
 
-        <div class="starter-template" ng-app="myApp">
+        <div class="starter-template">
             <h1>Welcome to my Angular world!</h1>
             <!-- <p class="lead">
               <input type="text" ng-model="yourName" placeholder="World">
               <h1>Hello, {{ yourName }}!</h1>
             </p> -->
             <div ng-controller="staffCtrl">
+              <!-- <p>Employees: {{employees}}</p> -->
               <staff-card></staff-card>
             </div>
 
             <div ng-controller="graphCtrl">
-              <div ac-chart="chartType" ac-data="data" ac-config="config" id='chart' class='chart'></div>
-              <select ng-model="selectedSeries" ng-options="series for series in relevantSeries"></select>
-              <select >
-                <option ng-repeat="series in relevantSeries" value="{{series}}">{{series}}</option>
-              </select>
+              <!-- <p>Selected Series: {{selectedSeries.name}} ({{selectedSeries.value}})</p>
+              <p>Type: {{chartType}}</p>
+              <p>Type: {{options.chart.type}}</p>
+              <p>Data: {{data}}</p> -->
+              <nvd3 options='options' data='data'></nvd3>
+              <select ng-model="data" ng-options="dataSet.data as dataSet.name for dataSet in dataSets"></select>
+              <select ng-model="options.chart.type" ng-options="chartType.value as chartType.name for chartType in chartTypes"></select>
+              <!-- <p>{{returnFavoriteOs()}}</p> -->
             </div>
         </div>
 
@@ -65,7 +70,8 @@
         <script type='text/javascript' src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
         <script type='text/javascript' src="bower_components/angular/angular.js"></script>
         <script type='text/javascript' src='bower_components/d3/d3.min.js'></script> 
-        <script type='text/javascript' src='bower_components/angular-charts/dist/angular-charts.js'></script>
+        <script type='text/javascript' src='bower_components/nvd3/nv.d3.js'></script>
+        <script type='text/javascript' src='bower_components/angular-nvd3/dist/angular-nvd3.js'></script>
         <script type='text/javascript' src="staff.js"></script>
         <script type='text/javascript' src="graph.js"></script>  
         <script type='text/javascript' src="app.js"></script>
