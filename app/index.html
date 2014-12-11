@@ -48,19 +48,19 @@
               <input type="text" ng-model="yourName" placeholder="World">
               <h1>Hello, {{ yourName }}!</h1>
             </p> -->
-            <div ng-controller="staffCtrl">
+            <div ng-controller="listCtrl">
               <!-- <p>Employees: {{employees}}</p> -->
               <staff-card></staff-card>
             </div>
 
-            <div ng-controller="graphCtrl">
+            <div ng-controller="chartCtrl">
               <!-- <p>Selected Series: {{selectedSeries.name}} ({{selectedSeries.value}})</p>
               <p>Type: {{chartType}}</p>
               <p>Type: {{options.chart.type}}</p> -->
               <!-- <p>Data: {{employees}}</p> -->
               <nvd3 options='options' data='data'></nvd3>
-              <select ng-model="data" ng-options="dataSet.data as dataSet.name for dataSet in dataSets"></select>
-              <select ng-model="options.chart.type" ng-options="chartType.value as chartType.name for chartType in chartTypes"></select>
+              <!-- <select ng-model="data" ng-change="yourFunction()" ng-options="dataSet.data as dataSet.name for dataSet in dataSets"></select> -->
+              <select ng-model="selectedChart" ng-change="selectChart()" ng-options="chart.series as chart.name for chart in charts"></select>
               <!-- <p>{{returnFavoriteOs()}}</p> -->
             </div>
         </div>
