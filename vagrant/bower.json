@@ -8,13 +8,15 @@
   "private": true,
   "dependencies": {
     "angular": "latest",
+    "angular-resource": "latest",
     "bootstrap": "latest",
     "d3": "latest",
     "nvd3": "latest",
     "angular-nvd3": "latest"
   },
     "resolutions": {
-    "d3": ">=3.4"
+    "d3": ">=3.4",
+    "angular": ">=1.2"
   },
   "ignore": [
     "**/.*",

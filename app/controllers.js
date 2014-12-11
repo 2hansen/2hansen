@@ -1,6 +1,18 @@
-(function(){
-	var app = angular.module("graph", []);
-	app.controller("graphCtrl", ['$rootScope', '$scope', '$log', 'staffService', function($rootScope, $scope, $log, staffService){
+var staffControllers = angular.module('staffControllers', []);
+
+staffControllers.controller('staffCtrl', ['$rootScope', '$http', '$log', function($rootScope, $http, $log) {
+		/*$http.get('http://beta.json-generator.com/api/json/get/PzBlqvl').
+			success(function(data, status, headers, config) {
+				$rootScope.SOMEWHEREELSEemployees = data;
+				//$log.log("Test 1 " + $rootScope.employees.length);
+			}).
+			error(function(data, status, headers, config) {
+      			$log.log(data);
+  			});*/
+
+	}]);
+
+staffControllers.controller("graphCtrl", ['$rootScope', '$scope', '$log', 'staffService', function($rootScope, $scope, $log, staffService){
 
 		returnSeries = function(series){
 			var employee;
@@ -10,14 +22,14 @@
 			
 	    	//$log.log($scope.employees.length);
 		  	staffService.all().success(function (data) {
-	    		$scope.employees = data;
-				for (employee in $scope.employees){
-					if($scope.employees[employee].isActive){
+	    		var employees = data;
+				for (employee in employees){
+					if(employees[employee].isActive){
 						var found = false;
 						//$log.log("Looking for " + $scope.employees[employee].favoriteOs);
 						for (element in staffData){
 							
-							if(staffData[element].key == $scope.employees[employee][series]){
+							if(staffData[element].key == employees[employee][series]){
 								found = true;
 								staffData[element].y++;
 								//$log.log("Increment " + $scope.employees[employee].favoriteOs);
@@ -25,7 +37,7 @@
 							}
 						}
 						if(found == false){
-							staffData.push({key: $scope.employees[employee][series], y: 1});
+							staffData.push({key: employees[employee][series], y: 1});
 							//$log.log("Add " + $scope.employees[employee].favoriteOs);
 						}
 					}
@@ -35,6 +47,10 @@
 			
 				//$log.log(staffData + " " + series);
 			return staffData;
+		};
+
+		returnEmployeeSeries = function(){
+			$scope.employees = Employee.query();
 		};
 
 		$scope.options = {
@@ -77,4 +93,27 @@
         //$log.log($scope.data);
 
 	}]);
-})();
+
+
+
+staffControllers.directive('staffCard', function(){
+		return {
+			restrict: 'E',
+			templateUrl: 'staff-card.html'
+		};
+	});
+
+staffControllers.service('staffService', ['$http', '$log', function($http, $log) {
+		function all() {
+			//$log.log('[PING] staffService');
+	    	return $http({
+	      		url: 'http://beta.json-generator.com/api/json/get/PzBlqvl',
+	      		method: 'GET'
+	    	});
+	  	}
+		return {
+	    	all: all
+	 	}
+	}]); 
+
+	

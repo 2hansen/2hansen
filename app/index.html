@@ -18,7 +18,7 @@
         
     </style>
   </head>
-  <body  ng-app="myApp">
+  <body  ng-app="staffApp">
     
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
           <div class="container">
@@ -66,14 +66,17 @@
         </div>
 
       </div><!-- /.container -->
+
+        <!-- TODO: Compile all js into one and include this only -->
         <script type='text/javascript' src="bower_components/jquery/dist/jquery.js"></script>
         <script type='text/javascript' src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
         <script type='text/javascript' src="bower_components/angular/angular.js"></script>
+        <script type='text/javascript' src="bower_components/angular-resource/angular-resource.js"></script>
         <script type='text/javascript' src='bower_components/d3/d3.min.js'></script> 
         <script type='text/javascript' src='bower_components/nvd3/nv.d3.js'></script>
         <script type='text/javascript' src='bower_components/angular-nvd3/dist/angular-nvd3.js'></script>
-        <script type='text/javascript' src="staff.js"></script>
-        <script type='text/javascript' src="graph.js"></script>  
+        <script type='text/javascript' src="services.js"></script>
+        <script type='text/javascript' src="controllers.js"></script>
         <script type='text/javascript' src="app.js"></script>
     </body>
     </html>
