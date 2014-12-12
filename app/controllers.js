@@ -1,10 +1,21 @@
 var staffControllers = angular.module('staffControllers', []);
 
+//The TabController
+staffControllers.controller('tabCtrl', function(){
+    this.tab = 2;
+    this.setTab = function(newValue){
+      this.tab = newValue;
+	};
+    this.isSet = function(tabName){
+      return this.tab === tabName;
+    };
+});
+
 
 //The ListController
 staffControllers.controller('listCtrl', ['$rootScope', '$http', '$log', '$scope', 'Employee', function($rootScope, $http, $log, $scope, Employee) {
 
-//	$scope.employees = Employee.query();	
+	$scope.employees = Employee.query();	
 
 }]);
 
