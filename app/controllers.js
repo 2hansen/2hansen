@@ -47,7 +47,7 @@ staffControllers.controller("chartCtrl", ['$rootScope', '$scope', '$log', 'Emplo
     	{name: 'Favorite OS', series: {name: 'favoriteOs', type: 'simplePie'}},
     	{name: 'Sex', series: {name: 'sex', type: "simpleDonut"}},
     	{name: 'Fulltime', series: {name: 'fullTime', type: "simplePie"}},
-		{name: 'Hours', series: {name: 'hours', type: "simpleBar", interval: 1}},
+		{name: 'Hours', series: {name: 'hours', type: "simpleBar", interval: 10}},
 		{name: 'Favorite Pet', series: {name: 'favoritePet', type: "simplePie"}}
     ];
 
@@ -81,20 +81,20 @@ staffControllers.controller("chartCtrl", ['$rootScope', '$scope', '$log', 'Emplo
 		var staffData = [];
 		staffData.push({values: [], key: 'key'});
 		var employees = $scope.employees;
-		$log.log(staffData);
+		//$log.log(staffData);
 		employees.$promise.then(function (employees){ //process when ready
 			for (var employee in employees){
 				if(employees[employee].isActive){
 					var found = false;
-					for (var element in staffData.values){	
-						if(Math.floor(staffData.values[element].label/series.interval) == Math.floor(employees[employee][series.name]/series.interval)){
+					for (var element in staffData[0].values){	
+						if(Math.floor(staffData[0].values[element].label/series.interval) == Math.floor(employees[employee][series.name]/series.interval)){
 							found = true;
-							staffData.values[element].value++;
+							staffData[0].values[element].value++;
 							break;
 						}
 					}
 					if(!found){
-						staffData[0].values.push({label: Math.floor(employees[employee][series.name]/series.interval), value: 1});
+						staffData[0].values.push({label: Math.floor(employees[employee][series.name]/series.interval)*series.interval, value: 1});
 					}
 				}
 			}
