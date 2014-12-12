@@ -31,11 +31,11 @@
                   <a href="" ng-click="tab.setTab(2)">List</a>
                 </li>
               </ul>
-              <div ng-show="tab.isSet(2)" ng-controller="chartCtrl">
-                <select ng-model="selectedChart" ng-change="selectChart()" ng-options="chart.series as chart.name for chart in charts"></select>
+              <div ng-show="tab.isSet(1)" ng-controller="chartCtrl">
                 <nvd3 options='options' data='data'></nvd3>
+                <select ng-model="selectedChart" ng-change="selectChart()" ng-options="chart.series as chart.name for chart in charts"></select>
               </div>
-              <div ng-show="tab.isSet(1)" ng-controller="listCtrl">
+              <div ng-show="tab.isSet(2)" ng-controller="listCtrl">
                 <staff-card></staff-card>
               </div>
             </section>

@@ -2,7 +2,7 @@ var staffControllers = angular.module('staffControllers', []);
 
 //The TabController
 staffControllers.controller('tabCtrl', function(){
-    this.tab = 2;
+    this.tab = 1;
     this.setTab = function(newValue){
       this.tab = newValue;
 	};
@@ -47,9 +47,8 @@ staffControllers.controller("chartCtrl", ['$rootScope', '$scope', '$log', 'Emplo
     	{name: 'Favorite OS', series: {name: 'favoriteOs', type: 'simplePie'}},
     	{name: 'Sex', series: {name: 'sex', type: "simpleDonut"}},
     	{name: 'Fulltime', series: {name: 'fullTime', type: "simplePie"}},
-		{name: 'Hours', series: {name: 'hours', type: "simpleLine"}},
+		{name: 'Hours', series: {name: 'hours', type: "simpleBar", interval: 1}},
 		{name: 'Favorite Pet', series: {name: 'favoritePet', type: "simplePie"}}
-
     ];
 
 	function setSimplePieData(series){
@@ -60,7 +59,7 @@ staffControllers.controller("chartCtrl", ['$rootScope', '$scope', '$log', 'Emplo
 				if(employees[employee].isActive){
 					var found = false;
 					//$log.log("Looking for " + series);
-					for (var element in staffData){	
+					for (var element in staffData){
 						if(staffData[element].key == employees[employee][series.name]){
 							found = true;
 							staffData[element].y++;
@@ -78,33 +77,24 @@ staffControllers.controller("chartCtrl", ['$rootScope', '$scope', '$log', 'Emplo
 		return staffData;
 	};
 
-	function setSimpleLineData(series){
+	function setSimpleBarData(series){
 		var staffData = [];
+		staffData.push({values: [], key: 'key'});
 		var employees = $scope.employees;
+		$log.log(staffData);
 		employees.$promise.then(function (employees){ //process when ready
 			for (var employee in employees){
 				if(employees[employee].isActive){
 					var found = false;
-					//$log.log("Looking for " + series);
-					for (var element in staffData){	
-						if(staffData[element].values == employees[employee][series.name]){
+					for (var element in staffData.values){	
+						if(Math.floor(staffData.values[element].label/series.interval) == Math.floor(employees[employee][series.name]/series.interval)){
 							found = true;
-							staffData[element].values.y++;
-							//$log.log("Increment " + employees[employee][series]);
+							staffData.values[element].value++;
 							break;
 						}
 					}
 					if(!found){
-						staffData.push(
-							{
-								key: "series",
-								values: {
-									x: employees[employee][series.name],
-									y: 1
-								}
-							}
-						);
-						$log.log("Add " + employees[employee][series.name]);
+						staffData[0].values.push({label: Math.floor(employees[employee][series.name]/series.interval), value: 1});
 					}
 				}
 			}
@@ -131,13 +121,13 @@ staffControllers.controller("chartCtrl", ['$rootScope', '$scope', '$log', 'Emplo
 					$scope.options.chart.x = function(d){return d.key;};
        				$scope.options.chart.y = function(d){return d.y;};
 					return setSimplePieData(series);
-			case 'simpleLine':
-					$scope.options.chart.type = 'lineChart';
-					$scope.options.chart.x = function(d){return d.x;};
-       				$scope.options.chart.y = function(d){return d.y;};
+			case 'simpleBar':
+					$scope.options.chart.type = 'discreteBarChart';
+					$scope.options.chart.x = function(d){return d.label;};
+       				$scope.options.chart.y = function(d){return d.value;};
        				//$scope.options.chart.xAxis.axisLabel = "X";
        				//$scope.options.chart.yAxis.axisLabel = "Y";
-					return setSimpleLineData(series);
+					return setSimpleBarData(series);
 		}
 	};
 
