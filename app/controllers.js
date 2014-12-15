@@ -69,13 +69,14 @@ staffControllers.controller("chartCtrl", ['$rootScope', '$scope', '$log', 'Emplo
 					}
 					if(!found){
 						staffData.push({key: employees[employee][series.name], y: 1});
-						//$log.log("Add " + employees[employee][series]);
 					}
 				}
 			}
+			staffData =  staffData.sort(function(a,b) {return (a.key > b.key ? 1 : ((b.key > a.key) ? -1 : 0));});
 		});
 		return staffData;
 	};
+
 
 	function setSimpleBarData(series){
 		var staffData = [];
@@ -88,6 +89,7 @@ staffControllers.controller("chartCtrl", ['$rootScope', '$scope', '$log', 'Emplo
 					var found = false;
 					for (var element in staffData[0].values){	
 						if(Math.floor(staffData[0].values[element].label/series.interval) == Math.floor(employees[employee][series.name]/series.interval)){
+							//if()
 							found = true;
 							staffData[0].values[element].value++;
 							break;
@@ -98,6 +100,7 @@ staffControllers.controller("chartCtrl", ['$rootScope', '$scope', '$log', 'Emplo
 					}
 				}
 			}
+			staffData[0].values =  staffData[0].values.sort(function(a,b) {return (a.label > b.label ? 1 : ((b.label > a.label) ? -1 : 0));});
 		});
 		return staffData;
 	};
@@ -106,6 +109,9 @@ staffControllers.controller("chartCtrl", ['$rootScope', '$scope', '$log', 'Emplo
 	//Accepts series.name and series.type
 	//Returns dataset in accordance with nv3d and series.type
    	function drawChart(series){ 
+   		if(series.interval == 'undefined'){
+			series.interval = 1;
+		} 
 		switch(series.type){
 			case 'simpleDonut':
 					$scope.options.chart.donut = true;
@@ -125,8 +131,6 @@ staffControllers.controller("chartCtrl", ['$rootScope', '$scope', '$log', 'Emplo
 					$scope.options.chart.type = 'discreteBarChart';
 					$scope.options.chart.x = function(d){return d.label;};
        				$scope.options.chart.y = function(d){return d.value;};
-       				//$scope.options.chart.xAxis.axisLabel = "X";
-       				//$scope.options.chart.yAxis.axisLabel = "Y";
 					return setSimpleBarData(series);
 		}
 	};
