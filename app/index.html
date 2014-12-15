@@ -19,38 +19,41 @@
     </style>
   </head>
   <body  ng-app="staffApp">
-      <div class="container">
-        <div class="starter-template">
-            <h1>Welcome to my Angular world!</h1>
-            <section ng-controller="tabCtrl as tab">
-              <ul class="nav nav-tabs">
-                <li ng-class="{ active:tab.isSet(1) }">
-                  <a href="" ng-click="tab.setTab(1)">Charts</a>
-                </li>
-                <li ng-class="{ active:tab.isSet(2) }">
-                  <a href="" ng-click="tab.setTab(2)">List</a>
-                </li>
-              </ul>
-              <div ng-show="tab.isSet(1)" ng-controller="chartCtrl">
-                <nvd3 options='options' data='data'></nvd3>
-                <select ng-model="selectedChart" ng-change="selectChart()" ng-options="chart.series as chart.name for chart in charts"></select>
-              </div>
-              <div ng-show="tab.isSet(2)" ng-controller="listCtrl">
-                <staff-card></staff-card>
-              </div>
-            </section>
-        </div>
+    <ng-view></ng-view>
+    <!-- <div class="container">
+      <div class="starter-template">
+        <h1>Welcome to my Angular world!</h1>
+        <section ng-controller="tabCtrl as tab">
+          <ul class="nav nav-tabs">
+            <li ng-class="{ active:tab.isSet(1) }">
+              <a href="" ng-click="tab.setTab(1)">Charts</a>
+            </li>
+            <li ng-class="{ active:tab.isSet(2) }">
+              <a href="" ng-click="tab.setTab(2)">List</a>
+            </li>
+          </ul>
+          <div ng-show="tab.isSet(1)" ng-controller="chartCtrl">
+            <nvd3 options='options' data='data'></nvd3>
+            <select ng-model="selectedChart" ng-change="selectChart()" ng-options="chart.series as chart.name for chart in charts"></select>
+          </div>
+          <div ng-show="tab.isSet(2)" ng-controller="listCtrl">
+            <staff-card></staff-card>
+          </div>
+        </section>
+      </div>
+    </div> -->
 
-        <!-- TODO: Compile all js into one and include this only -->
-        <script type='text/javascript' src="bower_components/jquery/dist/jquery.js"></script>
-        <script type='text/javascript' src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-        <script type='text/javascript' src="bower_components/angular/angular.js"></script>
-        <script type='text/javascript' src="bower_components/angular-resource/angular-resource.js"></script>
-        <script type='text/javascript' src='bower_components/d3/d3.min.js'></script> 
-        <script type='text/javascript' src='bower_components/nvd3/nv.d3.js'></script>
-        <script type='text/javascript' src='bower_components/angular-nvd3/dist/angular-nvd3.js'></script>
-        <script type='text/javascript' src="services.js"></script>
-        <script type='text/javascript' src="controllers.js"></script>
-        <script type='text/javascript' src="app.js"></script>
-    </body>
-    </html>
+    <!-- TODO: Compile all js into one and include this only -->
+    <script type='text/javascript' src="bower_components/jquery/dist/jquery.js"></script>
+    <script type='text/javascript' src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script type='text/javascript' src="bower_components/angular/angular.js"></script>
+    <script type='text/javascript' src="bower_components/angular-resource/angular-resource.js"></script>
+    <script type='text/javascript' src="bower_components/angular-route/angular-route.js"></script>
+    <script type='text/javascript' src='bower_components/d3/d3.min.js'></script> 
+    <script type='text/javascript' src='bower_components/nvd3/nv.d3.js'></script>
+    <script type='text/javascript' src='bower_components/angular-nvd3/dist/angular-nvd3.js'></script>
+    <script type='text/javascript' src="services.js"></script>
+    <script type='text/javascript' src="controllers.js"></script>
+    <script type='text/javascript' src="app.js"></script>
+  </body>
+</html>

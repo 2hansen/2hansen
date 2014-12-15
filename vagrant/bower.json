@@ -7,16 +7,14 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "angular": "latest",
     "angular-resource": "latest",
+    "angular-route": "latest",
     "bootstrap": "latest",
-    "d3": "latest",
-    "nvd3": "latest",
     "angular-nvd3": "latest"
   },
     "resolutions": {
     "d3": ">=3.4",
-    "angular": ">=1.2"
+    "angular": ">=1.3"
   },
   "ignore": [
     "**/.*",
