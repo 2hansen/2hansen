@@ -1,26 +1,14 @@
-var staffControllers = angular.module('staffControllers', []);
-
-//The TabController
-staffControllers.controller('tabCtrl', function(){
-    this.tab = 1;
-    this.setTab = function(newValue){
-      this.tab = newValue;
-	};
-    this.isSet = function(tabName){
-      return this.tab === tabName;
-    };
-});
-
+var employeesControllers = angular.module('employeesControllers', []);
 
 //The ListController
-staffControllers.controller('listCtrl', ['$rootScope', '$http', '$log', '$scope', 'Employee', function($rootScope, $http, $log, $scope, Employee) {
+employeesControllers.controller('listCtrl', ['$rootScope', '$http', '$log', '$scope', 'Employee', function($rootScope, $http, $log, $scope, Employee) {
 
 	$scope.employees = Employee.query();	
 
 }]);
 
 //The ChartController
-staffControllers.controller("chartCtrl", ['$rootScope', '$scope', '$log', 'Employee', function($rootScope, $scope, $log, Employee){
+employeesControllers.controller("chartCtrl", ['$rootScope', '$scope', '$log', 'Employee', function($rootScope, $scope, $log, Employee){
 
 	//Promise the employees
 	$scope.employees = Employee.query();
@@ -145,14 +133,17 @@ staffControllers.controller("chartCtrl", ['$rootScope', '$scope', '$log', 'Emplo
     $scope.selectChart();
 }]);
 
-
-
-staffControllers.directive('staffCard', function(){
-		return {
-			restrict: 'E',
-			templateUrl: 'staff-card.html'
-		};
+employeesControllers.directive('employeesList', function(){
+	return {
+		restrict: 'E',
+		templateUrl: '/templates/employees-list.html'
+	};
 });
 
-
+employeesControllers.directive('employeesChart', function(){
+	return {
+		restrict: 'E',
+		templateUrl: '/templates/employees-chart.html'
+	};
+});
 	

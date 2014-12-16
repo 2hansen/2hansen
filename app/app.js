@@ -1,17 +1,27 @@
 'use strict';
 
-var app = angular.module("staffApp", ['nvd3', 'ngRoute', 'staffControllers', 'staffServices'])
+var app = angular.module("ITKApp", [
+	'nvd3', 
+	'ngRoute', 
+	'navControllers', 
+	'employeeControllers', 
+	'employeesControllers',
+	'employeeServices'
+])
 
 nv.dev = false;
 
 
 app.config(['$routeProvider', function($routeProvider){
 	$routeProvider.
-		when('/', {
-			templateUrl: 'staff.html'
+		when('/employees', {
+			templateUrl: 'templates/employees.html',
+		}).
+		when('/employee/:employeeId',{
+			templateUrl: 'templates/employee.html'
 		}).
 		otherwise({
-			redirectTo: '/'
+			redirectTo: '/employees'
 		});
 }]);
 	/*.run(function($rootScope){

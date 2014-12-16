@@ -1,6 +1,6 @@
-var staffServices = angular.module('staffServices', ['ngResource']);
+var employeeServices = angular.module('employeeServices', ['ngResource']);
 
-staffServices.factory('Employee', ['$resource',
+employeeServices.factory('Employee', ['$resource',
   function($resource){
     return $resource('http://beta.json-generator.com/api/json/get/PzBlqvl', {}, {
       query: {method:'GET', /*params:{phoneId:'phones'},*/ isArray:true}

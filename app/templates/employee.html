@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="starter-template">
+    <h1>ITK Employee</h1>
+    <a href="/#/employees">home</a>
+    <section ng-controller="tabCtrl as tab">
+      <ul class="nav nav-tabs">
+        <li ng-class="{ active:tab.isSet(1) }">
+          <a href="" ng-click="tab.setTab(1)">Profile</a>
+        </li>
+        <li ng-class="{ active:tab.isSet(2) }">
+          <a href="" ng-click="tab.setTab(2)">Skills</a>
+        </li>
+      </ul>
+      <div ng-show="tab.isSet(1)" ng-controller="profileCtrl">
+        <div ng-repeat="employee in employees | filter: {_id: employeeId}">
+          {{employee._id}}
+        </div>
+      </div>
+      <div ng-show="tab.isSet(2)">
+      </div>
+    </section>
+  </div>
+</div>

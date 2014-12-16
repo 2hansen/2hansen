@@ -1,0 +1,4 @@
+<div ng-controller="chartCtrl">
+    <nvd3 options='options' data='data'></nvd3>
+    <select ng-model="selectedChart" ng-change="selectChart()" ng-options="chart.series as chart.name for chart in charts"></select>
+</div>
