@@ -2,19 +2,21 @@
   <div class="starter-template">
     <h1>ITK Employees</h1>
     <section ng-controller="tabCtrl as tab">
-      <ul class="nav nav-tabs">
-        <li ng-class="{ active:tab.isSet(1) }">
-          <a href="" ng-click="tab.setTab(1)">Chart</a>
-        </li>
-        <li ng-class="{ active:tab.isSet(2) }">
-          <a href="" ng-click="tab.setTab(2)">List</a>
-        </li>
-      </ul>
-      <div ng-show="tab.isSet(1)">
-        <employees-chart></employees-chart>
-      </div>
-      <div ng-show="tab.isSet(2)">
-        <employees-list></employees-list>
+      <div ng-controller="employeesCtrl">
+        <ul class="nav nav-tabs">
+          <li ng-class="{ active:tab.isSet(1) }">
+            <a href="" ng-click="tab.setTab(1)">Chart</a>
+          </li>
+          <li ng-class="{ active:tab.isSet(2) }">
+            <a href="" ng-click="tab.setTab(2)">List</a>
+          </li>
+        </ul>
+        <div ng-show="tab.isSet(1)">
+          <employees-chart></employees-chart>
+        </div>
+        <div ng-show="tab.isSet(2)">
+          <employees-list></employees-list>
+        </div>
       </div>
     </section>
   </div>

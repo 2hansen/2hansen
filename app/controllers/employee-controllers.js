@@ -1,10 +1,17 @@
 var employeeControllers = angular.module('employeeControllers', []);
 
 
-//The ListController
-employeeControllers.controller('profileCtrl', ['$rootScope', '$routeParams', '$http', '$log', '$scope', 'Employee', function($rootScope, $routeParams, $http, $log, $scope, Employee) {
-
+employeeControllers.controller('employeeCtrl', ['$scope', '$routeParams', 'Employees', function($scope, $routeParams, Employees) {
 	$scope.employeeId = $routeParams.employeeId;
-	$scope.employees = Employee.query();
+	$scope.employees = Employees.query();
+}]);
 
+//The profileController
+employeeControllers.controller('profileCtrl', ['$scope', function($scope) {
+
+}]);
+
+//The skillController
+employeeControllers.controller('skillCtrl', ['$scope', 'Joke', function($scope, Joke) {
+	$scope.joke = Joke.query();
 }]);

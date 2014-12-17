@@ -6,7 +6,8 @@ var app = angular.module("ITKApp", [
 	'navControllers', 
 	'employeeControllers', 
 	'employeesControllers',
-	'employeeServices'
+	'employeesService',
+	'jokeService'
 ])
 
 nv.dev = false;

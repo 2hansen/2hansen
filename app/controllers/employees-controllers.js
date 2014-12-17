@@ -1,18 +1,21 @@
 var employeesControllers = angular.module('employeesControllers', []);
 
-//The ListController
-employeesControllers.controller('listCtrl', ['$rootScope', '$http', '$log', '$scope', 'Employee', function($rootScope, $http, $log, $scope, Employee) {
+//The employeesController
+employeesControllers.controller('employeesCtrl', ['$scope', 'Employees', function($scope, Employees){
 
-	$scope.employees = Employee.query();	
+	$scope.employees = Employees.query();	
+
+}]);
+
+//The ListController
+employeesControllers.controller('listCtrl', ['$scope', function($scope){
 
 }]);
 
 //The ChartController
-employeesControllers.controller("chartCtrl", ['$rootScope', '$scope', '$log', 'Employee', function($rootScope, $scope, $log, Employee){
+employeesControllers.controller("chartCtrl", ['$scope', function($scope){
 
-	//Promise the employees
-	$scope.employees = Employee.query();
-
+	
 	//Basic options for Chart
 	$scope.options = {
     	chart: {
