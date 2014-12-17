@@ -44,8 +44,8 @@ employeesControllers.controller("chartCtrl", ['$scope', function($scope){
 
 	function setSimplePieData(series){
 		var staffData = [];
-		var employees = $scope.employees;
-		employees.$promise.then(function (employees){ //process when ready
+		//var employees = $scope.employees;
+		$scope.employees.$promise.then(function (employees){ //process when ready
 			for (var employee in employees){
 				if(employees[employee].isActive){
 					var found = false;
@@ -72,9 +72,9 @@ employeesControllers.controller("chartCtrl", ['$scope', function($scope){
 	function setSimpleBarData(series){
 		var staffData = [];
 		staffData.push({values: [], key: 'key'});
-		var employees = $scope.employees;
+		//var employees = $scope.employees;
 		//$log.log(staffData);
-		employees.$promise.then(function (employees){ //process when ready
+		$scope.employees.$promise.then(function (employees){ //process when ready
 			for (var employee in employees){
 				if(employees[employee].isActive){
 					var found = false;
