@@ -15,9 +15,8 @@
         <div ng-show="tab.isSet(1)" ng-controller="profileCtrl">
           <div ng-repeat="employi in employees | filter:{ _id: employeeId }"> 
             {{employi.name.first + " " + employi.name.last}}
-            Once more: {{employee.name.first}}
           </div>
-          {{employee.getFirstName()}}
+          Once more: {{employee.name.first}}
         </div>
         <div ng-show="tab.isSet(2)" ng-controller="skillCtrl">
           {{skills}}
